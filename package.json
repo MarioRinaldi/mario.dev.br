@@ -1,0 +1,18 @@
+{
+  "name": "mario.dev.br",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "http-server docs -c-1 --gzip --brotli",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mario Felipe Rinaldi",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
