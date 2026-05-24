@@ -143,9 +143,9 @@ body {
 .social svg {
   border-radius: 20px;
   fill: var(--color-primary);
+  color: var(--color-primary);
   background: var(--color-primary-invert);
   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
-  /* thanks to css tricks */
 }
 
 .links {
