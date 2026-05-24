@@ -1,17 +1,16 @@
 name: Purge Cloudflare Cache
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types:
+      - completed
 
 jobs:
   purge:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Wait for GitHub Pages deploy
-        run: sleep 30
-
       - name: Purge Cloudflare cache
         run: |
           curl -s -X POST \
