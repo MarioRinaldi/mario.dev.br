@@ -30,7 +30,6 @@ body {
 
 .container {
   display: block;
-  grid-template-columns: 1fr 1fr;
 }
 
 .main {
@@ -116,9 +115,9 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -127,9 +126,6 @@ body {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
 }
 
 .social a {
@@ -151,8 +147,6 @@ body {
   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
   /* thanks to css tricks */
 }
-
-;
 
 .links {
   width: 100%;
