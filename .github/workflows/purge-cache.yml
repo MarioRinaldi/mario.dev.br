@@ -1,0 +1,30 @@
+name: Purge Cloudflare Cache
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for GitHub Pages deploy
+        run: sleep 30
+
+      - name: Purge Cloudflare cache
+        run: |
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}' \
+            | tee /tmp/cf-response.json
+
+          if ! grep -q '"success":true' /tmp/cf-response.json; then
+            echo "Cache purge failed:"
+            cat /tmp/cf-response.json
+            exit 1
+          fi
+
+          echo "Cache purged successfully"
